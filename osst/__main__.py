@@ -1,4 +1,7 @@
-from osst import *
+from osst.system_info import get_system_resources
+from osst.network_info import get_network_info
+from osst.services_info import get_active_services
+from osst.output import print_system_resources, print_network_info, print_services_info
 
 
 def main():
