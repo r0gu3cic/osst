@@ -12,13 +12,13 @@ def print_network_info(net_data):
     if net_data['interfaces']:
         print("Network Interfaces and IP Addresses:")
         for iface, ip in net_data['interfaces'].items():
-            print(f"  - {iface}: {ip}")
+            print(f"- {iface}: {ip}")
     else:
         print("No active network interfaces found.")
 
     if net_data['open_ports']:
         print("\nOpen Listening Ports (non-loopback):")
         for ip, port in net_data['open_ports']:
-            print(f"  - {ip}:{port}")
+            print(f"- {ip}:{port}")
     else:
         print("No open listening ports found.")
