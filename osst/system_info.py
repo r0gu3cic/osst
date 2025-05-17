@@ -1,5 +1,3 @@
-# Functions for system resources info
-
 import psutil
 
 def get_system_resources():

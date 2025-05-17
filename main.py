@@ -1,16 +1,15 @@
 # Entry point – CLI interface
 
-from osst import system_info
+from osst import system_info, output
 
 def main():
-    print("[OSST] Starting system inspection...\n")
+    print("=" * 50)
+    print("📊 Operating System Story Teller (OSST)")
+    print("=" * 50)
 
     sys_data = system_info.get_system_resources()
 
-    print("=== System Resources ===")
-    print(f"CPU Cores: {sys_data['cpu_cores']}")
-    print(f"Total RAM: {sys_data['total_ram_gb']:.2f} GB")
-    print(f"Total Disk Space: {sys_data['total_disk_gb']:.2f} GB")
+    output.print_system_resources(sys_data)
 
 if __name__ == "__main__":
     main()
