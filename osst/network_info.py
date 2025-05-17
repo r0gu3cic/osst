@@ -21,7 +21,12 @@ def get_network_info():
     for conn in connections:
         if conn.status == psutil.CONN_LISTEN:
             ip, port = conn.laddr
-            if not ip.startswith("127.") and ip != '::1':
+
+            # Skip IPv6 addresses and loopback
+            if ':' in ip or ip == '::' or ip == '::1':
+                continue
+
+            if not ip.startswith("127."):
                 open_ports.add((ip, port))
 
     return {
