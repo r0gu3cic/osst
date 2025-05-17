@@ -23,7 +23,7 @@ def print_network_info(net_data):
     else:
         print("\n🌐 No open listening ports found.")
 
-def print_services(services):
+def print_services_info(services):
     """
     Nicely prints the list of active services.
     """

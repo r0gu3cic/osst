@@ -1,23 +1,18 @@
-# Entry point – CLI interface
-
-from osst import system_info, network_info, services_info, output
+from osst import *
 
 def main():
     print("=" * 50)
     print("📊 Operating System Story Teller (OSST)")
     print("=" * 50)
 
-    sys_data = system_info.get_system_resources()
+    sys_data = get_system_resources()
+    print_system_resources(sys_data)
 
-    output.print_system_resources(sys_data)
+    network_data = get_network_info()
+    print_network_info(network_data)
 
-    network_data = network_info.get_network_info()
-
-    output.print_network_info(network_data)
-
-    services_data = services_info.get_active_services()
-    
-    output.print_services(services_data)
+    services_data = get_active_services()
+    print_services_info(services_data)
 
 if __name__ == "__main__":
     main()

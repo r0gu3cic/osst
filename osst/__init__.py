@@ -1,12 +1,19 @@
-# TODO 
-# __init__.py
-#
-# This file marks the osst directory as a Python package.
-# 
-# In the future, it can be used to:
-# - Define the package version (e.g., __version__ = "0.1.0")
-# - Export public interfaces via __all__
-# - Automatically import submodules for easier access
-# - Store shared constants or initialization logic
-#
-# For now, it can remain empty.
+__version__ = "0.1.0"
+
+from .system_info import get_system_resources
+from .network_info import get_network_info
+from .services_info import get_active_services
+from .output import (
+    print_system_resources,
+    print_network_info,
+    print_services_info
+)
+
+__all__ = [
+    "get_system_resources",
+    "get_network_info",
+    "get_active_services",
+    "print_system_resources",
+    "print_network_info",
+    "print_services_info",
+]
