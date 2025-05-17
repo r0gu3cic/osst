@@ -21,4 +21,15 @@ def print_network_info(net_data):
         for ip, port in net_data['open_ports']:
             print(f"- {ip}:{port}")
     else:
-        print("No open listening ports found.")
+        print("\n🌐 No open listening ports found.")
+
+def print_services(services):
+    """
+    Nicely prints the list of active services.
+    """
+    if not services:
+        print("\n⚙️ No relevant active services found.")
+    else:
+        print("\n⚙️ Active services (excluding system defaults):")
+        for svc in services:
+            print(f"- {svc}")

@@ -16,7 +16,8 @@ def main():
     output.print_network_info(network_data)
 
     services_data = services_info.get_active_services()
-    print(services_data)
+    
+    output.print_services(services_data)
 
 if __name__ == "__main__":
     main()
