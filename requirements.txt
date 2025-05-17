@@ -1,3 +1,4 @@
 # Additional required libraries
 
-psutil>=5.9.0
+wheel
+psutil>=5.9
