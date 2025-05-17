@@ -1,1 +1,0 @@
-# Send results on email or slack
