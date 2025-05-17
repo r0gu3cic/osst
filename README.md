@@ -14,7 +14,7 @@ install one way
 sudo make install from project root dir
 
 install other way
-download deb file 
+download deb file
 sudo dpkg -i deb_dist/python3-osst_0.1.0-1_all.deb
 notes for .deb file
 user@server:~/osst/deb_dist$ history | grep install
