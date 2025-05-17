@@ -5,8 +5,8 @@ def main():
     print("📊 Operating System Story Teller (OSST)")
     print("=" * 50)
 
-    sys_data = get_system_resources()
-    print_system_resources(sys_data)
+    system_data = get_system_resources()
+    print_system_resources(system_data)
 
     network_data = get_network_info()
     print_network_info(network_data)

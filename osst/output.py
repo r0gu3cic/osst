@@ -1,10 +1,10 @@
 # Formatting and printing results for CLI or JSON export
 
-def print_system_resources(sys_data):
+def print_system_resources(system_data):
     print("\n🖥️ System Information:")
-    print(f"CPU Cores: {sys_data['cpu_cores']}")
-    print(f"Total RAM: {sys_data['total_ram_gb']:.2f} GB")
-    print(f"Total Disk Space: {sys_data['total_disk_gb']:.2f} GB")
+    print(f"CPU Cores: {system_data['cpu_cores']}")
+    print(f"Total RAM: {system_data['total_ram_gb']:.2f} GB")
+    print(f"Total Disk Space: {system_data['total_disk_gb']:.2f} GB")
 
 def print_network_info(net_data):
     print("\n🌐 Network Information:")
