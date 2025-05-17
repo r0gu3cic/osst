@@ -4,6 +4,20 @@ def get_active_services():
     """
     Returns a list of active (running) systemd services on the system.
     """
+    # We blacklist some common services
+    blacklist = {
+        'systemd-journald.service',
+        'systemd-logind.service',
+        'systemd-networkd.service',
+        'systemd-resolved.service',
+        'systemd-timesyncd.service',
+        'systemd-udevd.service',
+        'rsyslog.service',
+        'dbus.service',
+        'polkit.service',
+        'packagekit.service',
+        'snapd.service',
+    }
     try:
         # We call systemctl to get only active (running) services in short format
         result = subprocess.run(
@@ -18,7 +32,8 @@ def get_active_services():
             if line:
                 # The first column is the name of the service, e.g. ssh.service
                 service_name = line.split()[0]
-                services.append(service_name)
+                if service_name not in blacklist:
+                    services.append(service_name)
         return services
     except Exception as e:
         # In case of error, return an empty list or you can log the error
