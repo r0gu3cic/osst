@@ -1,1 +1,3 @@
 # Additional required libraries
+
+psutil>=5.9.0
