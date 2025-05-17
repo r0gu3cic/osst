@@ -1,0 +1,1 @@
+# Automated installation for this CLI tool
