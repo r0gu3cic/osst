@@ -1,4 +1,5 @@
 import subprocess
+import re
 
 def get_active_services():
     """
@@ -54,4 +55,5 @@ def get_active_services():
         return services
     except Exception as e:
         # In case of error, return an empty list or you can log the error
+        print(f"[ERROR] Failed to retrieve services: {e}")
         return []
