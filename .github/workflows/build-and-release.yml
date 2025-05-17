@@ -1,0 +1,53 @@
+# name: Build and Release .deb Package
+
+# on:
+#   push:
+#     tags:
+#       - 'v*.*.*'  # Triggeruje na svaki tag u formatu vX.Y.Z, npr. v0.1.0
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
+
+#     - name: Set up dependencies
+#       run: |
+#         sudo apt-get update
+#         sudo apt-get install -y build-essential devscripts dh-python debhelper python3-all
+
+#     - name: Build .deb package
+#       run: |
+#         dpkg-buildpackage -us -uc
+
+#     - name: List built files
+#       run: ls -l ../
+
+#     - name: Upload .deb artifact
+#       uses: actions/upload-artifact@v3
+#       with:
+#         name: deb-package
+#         path: ../*.deb
+
+#   release:
+#     needs: build
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Download .deb artifact
+#       uses: actions/download-artifact@v3
+#       with:
+#         name: deb-package
+#         path: ./deb
+
+#     - name: Create Release and upload .deb
+#       id: create_release
+#       uses: softprops/action-gh-release@v1
+#       with:
+#         tag_name: ${{ github.ref_name }}
+#         name: Release ${{ github.ref_name }}
+#         files: ./deb/*.deb
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
