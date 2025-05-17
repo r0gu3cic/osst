@@ -1,6 +1,7 @@
 import psutil
 import socket
 
+
 def get_network_info():
     """
     Returns network info as a dict with:
@@ -16,20 +17,17 @@ def get_network_info():
                 result_interfaces[iface_name] = addr.address
 
     open_ports = set()
-    connections = psutil.net_connections(kind='inet')
+    connections = psutil.net_connections(kind="inet")
 
     for conn in connections:
         if conn.status == psutil.CONN_LISTEN:
             ip, port = conn.laddr
 
             # Skip IPv6 addresses and loopback
-            if ':' in ip or ip == '::' or ip == '::1':
+            if ":" in ip or ip == "::" or ip == "::1":
                 continue
 
             if not ip.startswith("127."):
                 open_ports.add((ip, port))
 
-    return {
-        "interfaces": result_interfaces,
-        "open_ports": sorted(open_ports)
-    }
+    return {"interfaces": result_interfaces, "open_ports": sorted(open_ports)}

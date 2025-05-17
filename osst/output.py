@@ -1,27 +1,30 @@
 # Formatting and printing results for CLI or JSON export
 
+
 def print_system_resources(system_data):
     print("\n🖥️ System Information:")
     print(f"CPU Cores: {system_data['cpu_cores']}")
     print(f"Total RAM: {system_data['total_ram_gb']:.2f} GB")
     print(f"Total Disk Space: {system_data['total_disk_gb']:.2f} GB")
 
+
 def print_network_info(net_data):
     print("\n🌐 Network Information:")
-    
-    if net_data['interfaces']:
+
+    if net_data["interfaces"]:
         print("Network Interfaces and IP Addresses:")
-        for iface, ip in net_data['interfaces'].items():
+        for iface, ip in net_data["interfaces"].items():
             print(f"- {iface}: {ip}")
     else:
         print("No active network interfaces found.")
 
-    if net_data['open_ports']:
+    if net_data["open_ports"]:
         print("\nOpen Listening Ports (non-loopback):")
-        for ip, port in net_data['open_ports']:
+        for ip, port in net_data["open_ports"]:
             print(f"- {ip}:{port}")
     else:
         print("\n🌐 No open listening ports found.")
+
 
 def print_services_info(services):
     """

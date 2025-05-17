@@ -1,5 +1,6 @@
 from osst import *
 
+
 def main():
     print("=" * 50)
     print("📊 Operating System Story Teller (OSST)")
@@ -13,6 +14,7 @@ def main():
 
     services_data = get_active_services()
     print_services_info(services_data)
+
 
 if __name__ == "__main__":
     main()

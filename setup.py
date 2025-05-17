@@ -6,11 +6,7 @@ setup(
     description="Operating System Story Teller (OSST)",
     author="enabler",
     packages=find_packages(),
-    entry_points={
-        "console_scripts": [
-            "osst=osst.__main__:main"
-        ]
-    },
+    entry_points={"console_scripts": ["osst=osst.__main__:main"]},
     python_requires=">=3.6",
     install_requires=[
         "psutil",
