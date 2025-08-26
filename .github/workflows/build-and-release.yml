@@ -2,8 +2,10 @@ name: Build and Release .deb Package
 
 on:
   push:
-    tags:
-      - 'v*.*.*'  # Triggered only when pushing tags in the format v0.1.0
+    branches:
+      - develop
+    # tags:
+    #   - 'v*.*.*'  # Triggered only when pushing tags in the format v0.1.0
 
 jobs:
   build:
