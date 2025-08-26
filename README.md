@@ -30,6 +30,7 @@ sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhe
 sudo apt install python3-psutil
 git clone https://github.com/r0gu3cic/osst.git
 cd osst/
+python3 setup.py --command-packages=stdeb.command bdist_deb
 mkdir -p moj_deb_folder
 mv deb_dist/*.deb moj_deb_folder/
 sudo dpkg -i /root/osst/moj_deb_folder/python3-osst_0.1.0-1_all.deb
