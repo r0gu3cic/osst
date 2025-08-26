@@ -21,10 +21,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-stdeb python3-setuptools python3-pip \
-                              dh-python python3-all debhelper build-essential
-          pip install --upgrade pip
-          pip install psutil
+          sudo apt install -y python3-stdeb dh-python python3-all debhelper build-essential
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools psutil
 
       - name: Build DEB package
         run: |
