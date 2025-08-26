@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential python3-psutil
+          sudo apt install python3-stdeb dh-python python3-all build-essential debhelper
       
       - name: Install dependencies
         run: |
