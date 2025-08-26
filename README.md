@@ -18,18 +18,19 @@ apt install make
 apt install python3-pip
 cd osst/
 make install
-osst i radi
+osst = works
 
 ### install other way
 download deb file
-sudo dpkg -i deb_dist/python3-osst_0.1.0-1_all.deb
+sudo dpkg -i /root/osst/moj_deb_folder/python3-osst_0.1.0-1_all.deb
 #### notes for .deb file
-user@server:~/osst/deb_dist$ history | grep install
-   20  sudo apt install python3-stdeb fakeroot
-   30  sudo apt install -y python3-all debhelper fakeroot build-essential
-   34  sudo apt install dh-python
-   36  pip3 install -r requirements.txt
-   37  sudo apt install python3-pip
-   38  pip3 install -r requirements.txt
-   41  sudo apt install python3-psutil
-   62  history | grep install
+sudo apt update
+sudo apt install python3-stdeb python3-setuptools python3-pip -y
+sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential
+sudo apt install python3-psutil
+git clone https://github.com/r0gu3cic/osst.git
+cd osst/
+mkdir -p moj_deb_folder
+mv deb_dist/*.deb moj_deb_folder/
+sudo dpkg -i /root/osst/moj_deb_folder/python3-osst_0.1.0-1_all.deb
+osst = works
