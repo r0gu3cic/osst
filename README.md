@@ -6,17 +6,24 @@ Because every server has a story — OSST listens and tells it.
 
 Operating System Story Teller (OSST) is a lightweight CLI tool that tells the story of a Linux server by collecting and displaying key system information — CPU, memory, disk, running services, network interfaces, and open ports.
 
-local development
+### local development
 pip3 install -r requirements.txt
 test python3 -m osst.__main__
 
-install one way
+### install one way
 sudo make install from project root dir
+git clone https://github.com/r0gu3cic/osst.git
+apt update
+apt install make
+apt install python3-pip
+cd osst/
+make install
+osst i radi
 
-install other way
+### install other way
 download deb file
 sudo dpkg -i deb_dist/python3-osst_0.1.0-1_all.deb
-notes for .deb file
+#### notes for .deb file
 user@server:~/osst/deb_dist$ history | grep install
    20  sudo apt install python3-stdeb fakeroot
    30  sudo apt install -y python3-all debhelper fakeroot build-essential
