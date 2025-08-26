@@ -16,25 +16,20 @@ jobs:
     - name: Set up dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y \
-          build-essential \
-          devscripts \
-          dh-python \
-          debhelper \
-          python3-all \
-          python3-stdeb \
-          fakeroot
+        sudo apt-get install -y build-essential devscripts dh-python debhelper python3-all
 
     - name: Build .deb package
       run: |
-        python3 setup.py --command-packages=stdeb.command bdist_deb
-        ls -l deb_dist/
+        dpkg-buildpackage -us -uc
+
+    - name: List built files
+      run: ls -l ../
 
     - name: Upload .deb artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: deb-package
-        path: deb_dist/*.deb
+        path: ../*.deb
 
   release:
     needs: build
@@ -42,12 +37,13 @@ jobs:
 
     steps:
     - name: Download .deb artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: deb-package
         path: ./deb
 
     - name: Create Release and upload .deb
+      id: create_release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ github.ref_name }}
