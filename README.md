@@ -25,8 +25,7 @@ download deb file
 sudo dpkg -i /root/osst/moj_deb_folder/python3-osst_0.1.0-1_all.deb
 #### notes for .deb file
 sudo apt update
-sudo apt install python3-stdeb python3-setuptools python3-pip -y
-sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential
+sudo apt install -y python3-stdeb python3-pip dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential
 sudo apt install python3-psutil
 git clone https://github.com/r0gu3cic/osst.git
 cd osst/
