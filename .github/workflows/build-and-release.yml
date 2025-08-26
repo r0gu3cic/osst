@@ -22,21 +22,26 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential python3-psutil
+      
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools psutil stdeb
 
       - name: Show current directory
         run: pwd
 
+      - name: Prepare directory for deb package
+        run: mkdir -p release
+
       - name: List files
         run: ls -la
 
-      - name: Change to osst directory
-        run: cd osst && pwd && ls -la
-
       - name: Build DEB package
-        run: |
-          python3 setup.py --command-packages=stdeb.command bdist_deb
-          mkdir -p release
-          mv deb_dist/*.deb release/
+        run: python3 setup.py --command-packages=stdeb.command bdist_deb
+
+      - name: Move built deb package to the release directory
+        run: mv deb_dist/*.deb release/
 
   release:
     needs: build
