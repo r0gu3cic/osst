@@ -11,19 +11,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y dh-python python3-all debhelper build-essential
-          python3 -m pip install --upgrade pip
-          python3 -m pip install setuptools psutil stdeb
+          sudo apt install -y dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential python3-psutil
+
+      - name: Show current directory
+        run: pwd
+
+      - name: List files
+        run: ls -la
+
+      - name: Change to osst directory
+        run: cd osst && pwd && ls -la
 
       - name: Build DEB package
         run: |
