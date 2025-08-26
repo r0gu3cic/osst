@@ -10,24 +10,32 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      - name: Install system dependencies
+      - name: Install build deps
         run: |
-          sudo apt update
-          sudo apt install -y python3-stdeb python3-pip dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential
-      
-      - name: Downgrade setuptools to match server
-        run: |
-          python3 -m pip install --upgrade pip==22.0.2
-          python3 -m pip install setuptools==59.6.0 stdeb==0.10.0
+          sudo apt-get update
+          sudo apt-get install -y \
+            python3-stdeb \
+            dh-python \
+            debhelper \
+            fakeroot
 
+      - name: Build .deb package
+        run: |
+          python3 setup.py --command-packages=stdeb.command bdist_deb
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: deb_dist/*.deb
       - name: Show current directory
         run: pwd
 

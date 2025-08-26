@@ -15,7 +15,7 @@ cd osst/
 sudo make install
 ```
 
-After install you can run the tool with
+After install you can run the tool with  
 `osst`
 
 ## Install from deb package
@@ -26,8 +26,7 @@ sudo dpkg -i /root/osst/moj_deb_folder/python3-osst_0.1.0-1_all.deb
 ### notes for .deb file
 
 sudo apt update
-sudo apt install -y python3-stdeb python3-pip dh-python python3-all python3-setuptools python3-stdeb debhelper build-essential
-sudo apt install python3-psutil
+sudo apt-get install -y debhelper python3-all devscripts build-essential dh-python
 git clone <https://github.com/r0gu3cic/osst.git>
 cd osst/
 python3 setup.py --command-packages=stdeb.command bdist_deb
