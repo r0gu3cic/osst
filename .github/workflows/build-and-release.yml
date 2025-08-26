@@ -10,44 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential devscripts dh-python debhelper python3-all
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-    - name: Build .deb package
-      run: |
-        dpkg-buildpackage -us -uc
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python3-stdeb python3-setuptools python3-pip \
+                              dh-python python3-all debhelper build-essential
+          pip install --upgrade pip
+          pip install psutil
 
-    - name: List built files
-      run: ls -l ../
-
-    - name: Upload .deb artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: deb-package
-        path: ../*.deb
+      - name: Build DEB package
+        run: |
+          python3 setup.py --command-packages=stdeb.command bdist_deb
+          mkdir -p release
+          mv deb_dist/*.deb release/
 
   release:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download .deb artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: deb-package
-        path: ./deb
-
-    - name: Create Release and upload .deb
-      id: create_release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ github.ref_name }}
-        name: Release ${{ github.ref_name }}
-        files: ./deb/*.deb
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Echo works
+        run: echo "works"
