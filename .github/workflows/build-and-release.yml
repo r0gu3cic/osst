@@ -34,7 +34,12 @@ jobs:
       - name: Install Python build deps
         run: |
           python3 -m pip install --upgrade pip
-          pip install "setuptools<60" wheel stdeb
+          pip install --upgrade --force-reinstall "setuptools<60" wheel stdeb
+          python3 - <<'EOF'
+          import setuptools
+          print("setuptools version:", setuptools.__version__)
+          EOF
+
 
       - name: Build .deb package
         run: python3 setup.py --command-packages=stdeb.command bdist_deb
