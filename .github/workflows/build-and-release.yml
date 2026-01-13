@@ -34,7 +34,7 @@ jobs:
       - name: Install Python build deps
         run: |
           python3 -m pip install --upgrade pip
-          pip install setuptools wheel stdeb
+          pip install "setuptools<60" wheel stdeb
 
       - name: Build .deb package
         run: python3 setup.py --command-packages=stdeb.command bdist_deb
@@ -44,22 +44,11 @@ jobs:
         with:
           name: deb-package
           path: deb_dist/*.deb
-      - name: Show current directory
-        run: pwd
-
-      - name: Prepare directory for deb package
-        run: mkdir -p release
-
-      - name: List files
-        run: ls -la
-
-      - name: Move built deb package to the release directory
-        run: mv deb_dist/*.deb release/
 
   release:
     needs: build
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Echo works
-        run: echo "works"
+      - name: Echo build works
+        run: echo "Build works"
