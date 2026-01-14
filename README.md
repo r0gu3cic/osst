@@ -10,7 +10,7 @@ apt install make
 apt install python3-pip
 git clone https://github.com/r0gu3cic/osst.git
 cd osst/
-sudo make install
+make install
 ```
 
 After install you can run the tool with  
