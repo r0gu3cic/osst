@@ -9,10 +9,10 @@ setup(
     description="Operating System Story Teller (OSST)",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="enabler",
+    author="r0gu3cic",
     packages=find_packages(),
     entry_points={"console_scripts": ["osst=osst.__main__:main"]},
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     install_requires=[
         "psutil",
     ],
