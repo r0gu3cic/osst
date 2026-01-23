@@ -2,14 +2,14 @@
 
 
 def print_system_resources(system_data):
-    print("\n🖥️ System Information:")
+    print("\n[SYS] System Information:")
     print(f"CPU Cores: {system_data['cpu_cores']}")
     print(f"Total RAM: {system_data['total_ram_gb']:.2f} GB")
     print(f"Total Disk Space: {system_data['total_disk_gb']:.2f} GB")
 
 
 def print_network_info(net_data):
-    print("\n🌐 Network Information:")
+    print("\n[NET] Network Information:")
 
     if net_data["interfaces"]:
         print("Network Interfaces and IP Addresses:")
@@ -23,7 +23,7 @@ def print_network_info(net_data):
         for ip, port in net_data["open_ports"]:
             print(f"- {ip}:{port}")
     else:
-        print("\n🌐 No open listening ports found.")
+        print("\n[NET] No open listening ports found.")
 
 
 def print_services_info(services):
@@ -31,8 +31,8 @@ def print_services_info(services):
     Nicely prints the list of active services.
     """
     if not services:
-        print("\n⚙️ No relevant active services found.")
+        print("\n[SRV] No relevant active services found.")
     else:
-        print("\n⚙️ Active services (excluding system defaults):")
+        print("\n[SRV] Active services (excluding system defaults):")
         for svc in services:
             print(f"- {svc}")
